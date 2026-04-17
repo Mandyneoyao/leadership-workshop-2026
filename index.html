@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行前通知 · 2026 Leadership Workshop — 變「格」領航</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1A1410;
+    --ink-soft: #4A4038;
+    --ink-muted: #7A7068;
+    --cream: #F9F5EE;
+    --cream-deep: #EDE6D8;
+    --warm-white: #FDFAF5;
+    --gold: #A07830;
+    --gold-light: #C8A860;
+    --forest: #2E4A28;
+    --forest-light: #4A7A36;
+    --night: #0E1A2A;
+    --red-accent: #8C2010;
+    --border: rgba(60,40,20,0.15);
+    --border-strong: rgba(60,40,20,0.3);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.4;
+  }
+
+  .page { max-width: 820px; margin: 0 auto; padding: 0 1.5rem 5rem; position: relative; z-index: 1; }
+
+  /* ── Header ── */
+  .site-header {
+    padding: 2.5rem 0 2rem;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center;
+    border-bottom: 1px solid var(--border-strong);
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .site-header::before, .site-header::after {
+    content: '✦';
+    font-size: 10px; color: var(--gold);
+    position: absolute; bottom: -0.5em;
+    background: var(--cream); padding: 0 0.5rem;
+  }
+  .site-header::before { left: calc(50% - 60px); }
+  .site-header::after  { left: calc(50% + 40px); }
+
+  .badge {
+    display: inline-block;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+    color: var(--gold); border: 1px solid var(--gold-light);
+    padding: 4px 16px; border-radius: 20px;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+  }
+  .site-header h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 700; color: var(--ink);
+    line-height: 1.25; letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+  .site-header h1 em {
+    font-style: normal; color: var(--red-accent);
+    border-bottom: 2px solid var(--gold-light); padding-bottom: 2px;
+  }
+  .site-header .subtitle { font-size: 14px; color: var(--ink-muted); letter-spacing: 0.06em; }
+
+  /* ── Meta strip ── */
+  .meta-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border); border-radius: 12px;
+    overflow: hidden; margin-bottom: 3rem;
+  }
+  .meta-cell {
+    background: var(--warm-white); padding: 1rem 1.25rem;
+    text-align: center; transition: background 0.2s;
+  }
+  .meta-cell:hover { background: var(--cream-deep); }
+  .meta-icon-wrap {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--forest); margin: 0 auto 0.5rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .meta-icon-wrap svg { width: 16px; height: 16px; }
+  .meta-label { font-size: 10px; letter-spacing: 0.12em; color: var(--ink-muted); margin-bottom: 3px; }
+  .meta-value { font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.4; }
+
+  /* ── Section heading ── */
+  .section-heading {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 1.25rem; margin-top: 2.75rem;
+  }
+  .section-heading::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, var(--border-strong), transparent);
+  }
+  .section-heading span {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+    color: var(--gold); white-space: nowrap; text-transform: uppercase;
+  }
+
+  /* ── Checklist ── */
+  .checklist { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1rem; }
+  .check-item {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 14px 16px; background: var(--warm-white);
+    border: 1px solid var(--border); border-radius: 10px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .check-item:hover {
+    border-color: var(--gold-light);
+    box-shadow: 0 2px 12px rgba(160,120,48,0.08);
+  }
+  .check-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 8px; font-size: 17px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ci-food  { background: #FFF0E8; }
+  .ci-cup   { background: #FFF5E0; }
+  .ci-cloth { background: #EBF3FF; }
+  .ci-hotel { background: #EBF6EC; }
+  .ci-bus   { background: #FDF0E5; }
+  .ci-heart { background: #FBF0F5; }
+  .check-body { flex: 1; }
+  .check-cat {
+    font-size: 10px; letter-spacing: 0.14em;
+    color: var(--ink-muted); margin-bottom: 4px; text-transform: uppercase;
+  }
+  .check-body p { font-size: 13.5px; line-height: 1.7; color: var(--ink-soft); }
+  .check-body a { color: var(--forest); text-decoration: underline; text-decoration-color: var(--forest-light); }
+  .hl { font-weight: 500; color: var(--red-accent); }
+
+  /* ── Mystery grid ── */
+  .mystery-intro { font-size: 13.5px; color: var(--ink-muted); line-height: 1.7; margin-bottom: 1.25rem; }
+  .mystery-intro strong { color: var(--ink-soft); font-weight: 500; }
+
+  .grid-6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1rem; }
+
+  @media (max-width: 520px) {
+    .grid-6 { grid-template-columns: repeat(2, 1fr); }
+    .meta-strip { grid-template-columns: 1fr; }
+  }
+
+  .mystery-cell {
+    position: relative; aspect-ratio: 1; border-radius: 10px;
+    overflow: hidden; border: 1px solid var(--border); cursor: pointer;
+    background: var(--cream-deep);
+  }
+  .mystery-cell svg { width: 100%; height: 100%; display: block; }
+  .mystery-cell .blur-cover {
+    position: absolute; inset: 0;
+    backdrop-filter: blur(3px) saturate(0.7);
+    -webkit-backdrop-filter: blur(3px) saturate(0.7);
+    background: rgba(249,245,238,0.15); transition: opacity 0.3s;
+  }
+  .mystery-cell:hover .blur-cover   { opacity: 0; }
+  .mystery-cell:hover .cell-overlay { opacity: 1; }
+  .mystery-cell:hover .cell-num     { opacity: 0; }
+  .cell-overlay {
+    position: absolute; inset: 0; background: rgba(14,10,6,0.72);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s; border-radius: 10px;
+  }
+  .cell-overlay span {
+    color: #F9F5EE; font-size: 12px; font-weight: 400;
+    text-align: center; padding: 0 12px; line-height: 1.6; letter-spacing: 0.03em;
+  }
+  .cell-num {
+    position: absolute; top: 8px; left: 10px;
+    font-size: 10px; color: rgba(255,255,255,0.6);
+    background: rgba(0,0,0,0.28); padding: 2px 7px; border-radius: 10px;
+    letter-spacing: 0.06em; transition: opacity 0.2s;
+  }
+
+  /* ── Dream section ── */
+  .dream-box {
+    background: var(--night); border-radius: 14px;
+    padding: 2rem; margin-top: 0.5rem;
+    position: relative; overflow: hidden;
+  }
+  .dream-box::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 40% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 25%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 85% 15%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1.2px 1.2px at 55% 8%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(0.8px 0.8px at 25% 35%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 40%, rgba(255,255,255,0.5) 0%, transparent 100%);
+    pointer-events: none;
+  }
+  .dream-q {
+    font-family: 'Noto Serif TC', serif; font-size: 16px; font-weight: 600;
+    color: #F9F5EE; line-height: 1.6; margin-bottom: 0.5rem; position: relative;
+  }
+  .dream-sub {
+    font-size: 11px; color: rgba(249,245,238,0.5);
+    letter-spacing: 0.08em; margin-bottom: 1.25rem; position: relative;
+  }
+  textarea#dream {
+    width: 100%; min-height: 100px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15); border-radius: 8px;
+    padding: 12px 14px; font-size: 13.5px; line-height: 1.7;
+    color: #F9F5EE; font-family: 'Noto Sans TC', sans-serif;
+    resize: vertical; display: block; margin-bottom: 1rem;
+    position: relative; transition: border-color 0.2s;
+  }
+  textarea#dream::placeholder { color: rgba(249,245,238,0.3); }
+  textarea#dream:focus {
+    outline: none; border-color: rgba(200,168,96,0.6);
+    background: rgba(255,255,255,0.1);
+  }
+  .submit-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  button#submitDream {
+    font-family: 'Noto Sans TC', sans-serif; font-size: 13px; font-weight: 500;
+    padding: 9px 22px; border-radius: 8px;
+    border: 1px solid var(--gold-light); background: transparent;
+    color: var(--gold-light); cursor: pointer; letter-spacing: 0.06em;
+    transition: background 0.2s, color 0.2s; position: relative;
+  }
+  button#submitDream:hover { background: var(--gold-light); color: var(--night); }
+  button#submitDream:disabled { opacity: 0.5; cursor: not-allowed; }
+  .submit-note { font-size: 11px; color: rgba(249,245,238,0.4); }
+  .submit-status {
+    margin-top: 0.75rem; font-size: 12px;
+    color: rgba(249,245,238,0.6); min-height: 18px; position: relative;
+  }
+  .submit-status.ok  { color: #80CC80; }
+  .submit-status.err { color: #E88080; }
+
+  /* ── Privacy notice ── */
+  .privacy-box {
+    margin-top: 3rem; padding: 1.5rem;
+    background: var(--warm-white);
+    border: 1px solid var(--border); border-radius: 10px;
+  }
+  .privacy-title {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+    color: var(--ink-muted); margin-bottom: 0.75rem; text-transform: uppercase;
+  }
+  .privacy-body { font-size: 11.5px; line-height: 1.85; color: var(--ink-muted); }
+  .privacy-body a { color: var(--forest); text-decoration: underline; word-break: break-all; }
+  .privacy-body p + p { margin-top: 0.75rem; }
+
+  /* ── Footer ── */
+  .site-footer {
+    margin-top: 2rem; padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    text-align: center; font-size: 12px; color: var(--ink-muted); line-height: 1.8;
+  }
+  .site-footer a { color: var(--forest); }
+  .site-footer .mark {
+    font-family: 'Noto Serif TC', serif; font-size: 13px; color: var(--gold);
+    display: block; margin-top: 0.75rem; letter-spacing: 0.1em;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .page > * { animation: fadeUp 0.5s ease both; }
+  .page > *:nth-child(1) { animation-delay: 0.05s; }
+  .page > *:nth-child(2) { animation-delay: 0.12s; }
+  .page > *:nth-child(3) { animation-delay: 0.18s; }
+  .page > *:nth-child(4) { animation-delay: 0.24s; }
+  .page > *:nth-child(5) { animation-delay: 0.30s; }
+  .page > *:nth-child(n+6) { animation-delay: 0.36s; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="badge">行前通知 · Pre-Event Notice</div>
+    <h1>變<em>「格」</em>領航</h1>
+    <p class="subtitle">2026 Leadership Workshop &nbsp;·&nbsp; 4/28(二) – 4/29(三) 出發前必讀</p>
+  </header>
+
+  <!-- META STRIP -->
+  <div class="meta-strip">
+    <div class="meta-cell">
+      <div class="meta-icon-wrap">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="3" width="12" height="11" rx="2" stroke="#9FE1CB" stroke-width="1.2"/>
+          <line x1="5" y1="1.5" x2="5" y2="4.5" stroke="#9FE1CB" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="11" y1="1.5" x2="11" y2="4.5" stroke="#9FE1CB" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="2" y1="7" x2="14" y2="7" stroke="#9FE1CB" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <div class="meta-label">活動日期</div>
+      <div class="meta-value">4/28(二) – 4/29(三)<br>兩天一夜，全程參與</div>
+    </div>
+    <div class="meta-cell">
+      <div class="meta-icon-wrap">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5S12.5 9.5 12.5 6C12.5 3.5 10.5 1.5 8 1.5z" stroke="#9FE1CB" stroke-width="1.2"/>
+          <circle cx="8" cy="6" r="1.5" stroke="#9FE1CB" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="meta-label">活動地點</div>
+      <div class="meta-value">新竹 · 麻布山林<br>請穿輕便衣鞋</div>
+    </div>
+    <div class="meta-cell">
+      <div class="meta-icon-wrap">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="7" width="14" height="6" rx="2" stroke="#9FE1CB" stroke-width="1.2"/>
+          <circle cx="4" cy="13" r="1.2" fill="#9FE1CB"/>
+          <circle cx="12" cy="13" r="1.2" fill="#9FE1CB"/>
+          <path d="M5 7V5.5C5 4.1 6.1 3 7.5 3h1C9.9 3 11 4.1 11 5.5V7" stroke="#9FE1CB" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="meta-label">集合出發</div>
+      <div class="meta-value">4/28 早上 8:20<br>善導寺，8:30 準時出發</div>
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="section-heading">
+    <span>行前準備清單 · Pre-departure Checklist</span>
+  </div>
+
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-icon ci-food">🍽️</div>
+      <div class="check-body">
+        <div class="check-cat">食 · 飲食偏好調查</div>
+        <p>若有吃素或其他飲食偏好，請務必於 <span class="hl">4/21(二) 前</span> 回信告知 HR：<a href="mailto:dl_ltlhr_training@linecorp.com">dl_ltlhr_training@linecorp.com</a>，以利安排餐點。</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon ci-cup">🧋</div>
+      <div class="check-body">
+        <div class="check-cat">食 · 自備水杯</div>
+        <p>全程請自行攜帶水杯。愛地球從自備水杯開始。</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon ci-cloth">👟</div>
+      <div class="check-body">
+        <div class="check-cat">衣 · 穿著建議</div>
+        <p>請穿著方便活動的輕便衣鞋，並可多帶一套衣物備用。</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon ci-hotel">🌿</div>
+      <div class="check-body">
+        <div class="check-cat">住 · 環保盥洗提醒</div>
+        <p>住房 <span class="hl">不提供</span> 牙刷、牙膏、刮鬍刀等一次性用品，請攜帶個人盥洗用品。房內備有洗髮精、沐浴乳、毛巾及浴巾。</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon ci-bus">🚌</div>
+      <div class="check-body">
+        <div class="check-cat">行 · 統一搭乘遊覽車</div>
+        <p><span class="hl">4/28(二) 早上 8:20 善導寺集合</span>，8:30 準時出發，請勿遲到。</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon ci-heart">✨</div>
+      <div class="check-body">
+        <div class="check-cat">其他 · 心態準備</div>
+        <p>帶著一顆愉快和探索未知的心，準備好迎接驚喜與挑戰！</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MYSTERY GRID -->
+  <div class="section-heading">
+    <span>六個旅程片段 · Six Moments Await</span>
+  </div>
+
+  <p class="mystery-intro">
+    這趟旅程藏有 <strong>六個片段</strong>，現在只透露一隅。<br>
+    將滑鼠移到每個格子上，感受一下氛圍——答案留到現場揭曉 ✦
+  </p>
+
+  <div class="grid-6">
+
+    <!-- 01: 山林夜宿星空 -->
+    <div class="mystery-cell">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#0A0E1A"/>
+            <stop offset="45%"  stop-color="#1A2A4A"/>
+            <stop offset="75%"  stop-color="#2E3A28"/>
+            <stop offset="100%" stop-color="#1E2A18"/>
+          </linearGradient>
+        </defs>
+        <rect width="200" height="200" fill="url(#dusk)"/>
+        <circle cx="18"  cy="14" r="1.2" fill="white" opacity="0.8"/>
+        <circle cx="45"  cy="8"  r="0.8" fill="white" opacity="0.6"/>
+        <circle cx="80"  cy="20" r="1.0" fill="white" opacity="0.7"/>
+        <circle cx="120" cy="10" r="1.4" fill="white" opacity="0.9"/>
+        <circle cx="160" cy="18" r="0.9" fill="white" opacity="0.6"/>
+        <circle cx="185" cy="8"  r="1.1" fill="white" opacity="0.75"/>
+        <circle cx="35"  cy="32" r="0.7" fill="white" opacity="0.5"/>
+        <circle cx="100" cy="28" r="1.0" fill="white" opacity="0.65"/>
+        <circle cx="145" cy="35" r="0.8" fill="white" opacity="0.55"/>
+        <circle cx="170" cy="42" r="0.6" fill="white" opacity="0.4"/>
+        <circle cx="60"  cy="45" r="0.9" fill="white" opacity="0.5"/>
+        <circle cx="10"  cy="55" r="0.7" fill="white" opacity="0.45"/>
+        <circle cx="190" cy="55" r="1.0" fill="white" opacity="0.6"/>
+        <ellipse cx="100" cy="40" rx="90" ry="18" fill="white" opacity="0.025"/>
+        <circle cx="158" cy="28" r="12" fill="#FFF8D0" opacity="0.55"/>
+        <circle cx="163" cy="25" r="10" fill="#1A2A4A"/>
+        <ellipse cx="30"  cy="148" rx="60" ry="50" fill="#101A0C"/>
+        <ellipse cx="170" cy="152" rx="65" ry="52" fill="#0C1608"/>
+        <ellipse cx="100" cy="158" rx="80" ry="45" fill="#14200E"/>
+        <polygon points="55,130 62,110 69,130"    fill="#0A1208"/>
+        <polygon points="65,138 73,112 81,138"    fill="#0C1408"/>
+        <polygon points="118,135 126,115 134,135" fill="#0A1208"/>
+        <polygon points="130,140 138,120 146,140" fill="#0C1408"/>
+        <rect x="78" y="130" width="44" height="40" rx="2" fill="#1A1208"/>
+        <rect x="84" y="138" width="12" height="10" rx="1" fill="#F0C060" opacity="0.9"/>
+        <rect x="104" y="138" width="12" height="10" rx="1" fill="#F0C060" opacity="0.85"/>
+        <ellipse cx="90"  cy="150" rx="10" ry="4" fill="#F0C060" opacity="0.15"/>
+        <ellipse cx="110" cy="150" rx="10" ry="4" fill="#F0C060" opacity="0.15"/>
+        <rect x="0" y="168" width="200" height="32" fill="#0A1008"/>
+        <ellipse cx="100" cy="178" rx="30" ry="6" fill="#FFF8D0" opacity="0.06"/>
+      </svg>
+      <div class="blur-cover"></div>
+      <div class="cell-overlay"><span>山裡的夜晚<br>與星空共眠</span></div>
+      <div class="cell-num">01</div>
+    </div>
+
+    <!-- 02: 夜訪螢火蟲 -->
+    <div class="mystery-cell">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="200" height="200" fill="#071020"/>
+        <circle cx="25"  cy="20" r="1.3" fill="white" opacity="0.7"/>
+        <circle cx="60"  cy="12" r="0.9" fill="white" opacity="0.5"/>
+        <circle cx="100" cy="25" r="1.1" fill="white" opacity="0.65"/>
+        <circle cx="145" cy="14" r="1.4" fill="white" opacity="0.8"/>
+        <circle cx="175" cy="30" r="0.8" fill="white" opacity="0.5"/>
+        <circle cx="42"  cy="40" r="0.7" fill="white" opacity="0.4"/>
+        <circle cx="120" cy="10" r="1.0" fill="white" opacity="0.6"/>
+        <circle cx="80"  cy="45" r="0.6" fill="white" opacity="0.35"/>
+        <circle cx="160" cy="48" r="0.9" fill="white" opacity="0.45"/>
+        <circle cx="155" cy="28" r="14" fill="none" stroke="rgba(255,248,200,0.15)" stroke-width="8"/>
+        <circle cx="155" cy="28" r="9"  fill="#FFF8C8" opacity="0.6"/>
+        <ellipse cx="22"  cy="130" rx="24" ry="38" fill="#040C18"/>
+        <ellipse cx="178" cy="125" rx="26" ry="40" fill="#040C18"/>
+        <rect x="10"  y="140" width="7" height="60" fill="#020A14"/>
+        <rect x="170" y="136" width="7" height="65" fill="#020A14"/>
+        <ellipse cx="100" cy="175" rx="60" ry="18" fill="#0A2040" opacity="0.7"/>
+        <circle cx="68"  cy="92"  r="12" fill="#88EE33" opacity="0.12"/>
+        <circle cx="110" cy="75"  r="10" fill="#AAFF44" opacity="0.10"/>
+        <circle cx="140" cy="100" r="9"  fill="#99EE33" opacity="0.11"/>
+        <circle cx="85"  cy="118" r="8"  fill="#88FF44" opacity="0.10"/>
+        <circle cx="122" cy="135" r="11" fill="#AAEE33" opacity="0.12"/>
+        <circle cx="52"  cy="140" r="8"  fill="#99FF44" opacity="0.10"/>
+        <circle cx="160" cy="140" r="9"  fill="#88EE33" opacity="0.10"/>
+        <circle cx="68"  cy="92"  r="3.5" fill="#BBFF55" opacity="0.95"/>
+        <circle cx="110" cy="75"  r="3.0" fill="#CCFF44" opacity="0.90"/>
+        <circle cx="140" cy="100" r="2.5" fill="#AAFF55" opacity="0.85"/>
+        <circle cx="85"  cy="118" r="2.2" fill="#BBFF44" opacity="0.80"/>
+        <circle cx="122" cy="135" r="3.5" fill="#CCFF55" opacity="0.95"/>
+        <circle cx="52"  cy="140" r="2.0" fill="#99FF44" opacity="0.78"/>
+        <circle cx="160" cy="140" r="2.8" fill="#BBFF44" opacity="0.88"/>
+        <circle cx="35"  cy="105" r="1.8" fill="#AAFF55" opacity="0.70"/>
+        <circle cx="175" cy="110" r="2.0" fill="#CCFF44" opacity="0.75"/>
+        <rect x="0" y="160" width="200" height="40" fill="#040C18"/>
+        <rect x="0" y="155" width="200" height="12" fill="#071828" opacity="0.8"/>
+      </svg>
+      <div class="blur-cover"></div>
+      <div class="cell-overlay"><span>夜色中的閃光精靈<br>每年 4–5 月限定登場</span></div>
+      <div class="cell-num">02</div>
+    </div>
+
+    <!-- 03: 怒海尋寶 -->
+    <div class="mystery-cell">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="stormsky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#1A1020"/>
+            <stop offset="60%"  stop-color="#5C1008"/>
+            <stop offset="100%" stop-color="#1A3050"/>
+          </linearGradient>
+        </defs>
+        <rect width="200" height="200" fill="url(#stormsky)"/>
+        <ellipse cx="50"  cy="35" rx="48" ry="22" fill="#12101A" opacity="0.95"/>
+        <ellipse cx="130" cy="25" rx="58" ry="24" fill="#0E0C18" opacity="0.90"/>
+        <ellipse cx="185" cy="42" rx="30" ry="18" fill="#141220" opacity="0.85"/>
+        <ellipse cx="90"  cy="50" rx="40" ry="16" fill="#1A1828" opacity="0.70"/>
+        <polyline points="38,18 28,44 36,44 22,68" fill="none" stroke="#F0D060" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="162,12 154,36 162,36 148,62" fill="none" stroke="#F0D060" stroke-width="2.0" stroke-linecap="round"/>
+        <polyline points="110,22 106,36 110,36 103,50" fill="none" stroke="#E8C840" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
+        <path d="M-10 115 Q30 80 70 115 Q110 150 150 110 Q175 90 210 115 L210 200 L-10 200Z" fill="#1A3A5C"/>
+        <path d="M-10 130 Q25 112 60 130 Q100 148 140 128 Q170 115 210 130 L210 200 L-10 200Z" fill="#0F2840"/>
+        <path d="M-10 148 Q35 135 75 148 Q115 162 160 145 Q185 136 210 148 L210 200 L-10 200Z" fill="#09182E"/>
+        <path d="M-10 115 Q30 80 70 115" fill="none" stroke="#AACCEE" stroke-width="3" stroke-linecap="round"/>
+        <path d="M150 110 Q175 90 210 115" fill="none" stroke="#AACCEE" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M45 125 Q65 118 85 125" fill="none" stroke="#8AAEC8" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        <rect x="128" y="88" width="40" height="22" rx="2" fill="#3C2810"/>
+        <rect x="132" y="70" width="3"  height="22" fill="#2C1808"/>
+        <polygon points="135,70 155,72 148,85" fill="#D8C890" opacity="0.85"/>
+        <rect x="152" y="74" width="2.5" height="16" fill="#2C1808"/>
+        <polygon points="154.5,74 170,76 163,84" fill="#D8C890" opacity="0.75"/>
+        <rect x="128" y="108" width="40" height="5" rx="2" fill="#28180A"/>
+        <rect x="135" y="62" width="1.5" height="10" fill="#2C1808"/>
+        <polygon points="136.5,62 145,65 136.5,68" fill="#CC2200" opacity="0.9"/>
+        <path d="M128 95 Q118 88 112 92" fill="none" stroke="#8AAEC8" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+      <div class="blur-cover"></div>
+      <div class="cell-overlay"><span>在風浪中尋找寶藏<br>策略與膽識的考驗</span></div>
+      <div class="cell-num">03</div>
+    </div>
+
+    <!-- 04: 北埔老街/春嬌板條 -->
+    <div class="mystery-cell">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="street-sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#F5EDD8"/>
+            <stop offset="100%" stop-color="#E8DBBC"/>
+          </linearGradient>
+        </defs>
+        <rect width="200" height="200" fill="url(#street-sky)"/>
+        <rect x="5"  y="62"  width="82"  height="100" fill="#C9A870"/>
+        <rect x="95" y="72"  width="100" height="90"  fill="#B89060"/>
+        <polygon points="0,64 90,64 90,46 0,46"   fill="#9C6830"/>
+        <polygon points="0,46 90,46 96,30 -6,30"  fill="#8A5820"/>
+        <line x1="18" y1="30" x2="14" y2="46" stroke="#7A4A18" stroke-width="1" opacity="0.6"/>
+        <line x1="34" y1="30" x2="32" y2="46" stroke="#7A4A18" stroke-width="1" opacity="0.5"/>
+        <line x1="50" y1="30" x2="50" y2="46" stroke="#7A4A18" stroke-width="1" opacity="0.5"/>
+        <line x1="66" y1="30" x2="68" y2="46" stroke="#7A4A18" stroke-width="1" opacity="0.5"/>
+        <line x1="80" y1="30" x2="84" y2="46" stroke="#7A4A18" stroke-width="1" opacity="0.5"/>
+        <polygon points="88,74 200,74 200,56 88,56"  fill="#9C6830"/>
+        <polygon points="88,56 200,56 206,38 82,38" fill="#8A5820"/>
+        <line x1="108" y1="38" x2="105" y2="56" stroke="#7A4A18" stroke-width="1" opacity="0.5"/>
+        <line x1="130" y1="38" x2="130" y2="56" stroke="#7A4A18" stroke-width="1" opacity="0.5"/>
+        <line x1="152" y1="38" x2="154" y2="56" stroke="#7A4A18" stroke-width="1" opacity="0.5"/>
+        <line x1="174" y1="38" x2="178" y2="56" stroke="#7A4A18" stroke-width="1" opacity="0.5"/>
+        <rect x="14" y="78"  width="20" height="26" rx="1" fill="#3C2008" opacity="0.65"/>
+        <rect x="48" y="78"  width="20" height="26" rx="1" fill="#3C2008" opacity="0.65"/>
+        <rect x="14" y="116" width="20" height="24" rx="1" fill="#3C2008" opacity="0.55"/>
+        <rect x="48" y="116" width="20" height="24" rx="1" fill="#3C2008" opacity="0.55"/>
+        <rect x="30" y="128" width="18" height="34" rx="1" fill="#5C3A18"/>
+        <path d="M30,128 Q39,118 48,128" fill="none" stroke="#7A5028" stroke-width="1.5"/>
+        <rect x="108" y="88"  width="18" height="22" rx="1" fill="#3C2008" opacity="0.65"/>
+        <rect x="140" y="88"  width="18" height="22" rx="1" fill="#3C2008" opacity="0.65"/>
+        <rect x="172" y="88"  width="18" height="22" rx="1" fill="#3C2008" opacity="0.55"/>
+        <rect x="108" y="120" width="18" height="20" rx="1" fill="#3C2008" opacity="0.55"/>
+        <rect x="140" y="120" width="18" height="20" rx="1" fill="#3C2008" opacity="0.50"/>
+        <rect x="152" y="128" width="18" height="34" rx="1" fill="#5C3A18"/>
+        <path d="M152,128 Q161,118 170,128" fill="none" stroke="#7A5028" stroke-width="1.5"/>
+        <line x1="38"  y1="30" x2="38"  y2="52" stroke="#6B3A10" stroke-width="1.2"/>
+        <ellipse cx="38"  cy="57" rx="6" ry="9" fill="#CC2200" opacity="0.9"/>
+        <line x1="130" y1="38" x2="130" y2="60" stroke="#6B3A10" stroke-width="1.2"/>
+        <ellipse cx="130" cy="65" rx="6" ry="9" fill="#CC2200" opacity="0.9"/>
+        <rect x="0" y="160" width="200" height="40" fill="#C8B88A"/>
+        <line x1="0" y1="162" x2="200" y2="162" stroke="#B8A878" stroke-width="1" opacity="0.5"/>
+        <ellipse cx="162" cy="182" rx="22" ry="9" fill="#F0D090" opacity="0.8"/>
+        <ellipse cx="162" cy="177" rx="20" ry="7" fill="#E8C878" opacity="0.9"/>
+        <path d="M148 177 Q156 170 164 177 Q170 170 176 177" fill="none" stroke="#C07A40" stroke-width="2" stroke-linecap="round"/>
+        <text x="162" y="178" font-size="9" text-anchor="middle" fill="#8C5020" opacity="0.8" font-family="serif">板條</text>
+      </svg>
+      <div class="blur-cover"></div>
+      <div class="cell-overlay"><span>客家古街風情<br>令人念念不忘的在地好味道</span></div>
+      <div class="cell-num">04</div>
+    </div>
+
+    <!-- 05: 極速佈局戰 -->
+    <div class="mystery-cell">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="field-sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#B8D4EE"/>
+            <stop offset="100%" stop-color="#8EC0E8"/>
+          </linearGradient>
+          <linearGradient id="field-grass" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#7BC25A"/>
+            <stop offset="100%" stop-color="#5A9A3A"/>
+          </linearGradient>
+        </defs>
+        <rect width="200" height="100" fill="url(#field-sky)"/>
+        <rect x="0" y="100" width="200" height="100" fill="url(#field-grass)"/>
+        <ellipse cx="50"  cy="28" rx="30" ry="12" fill="white" opacity="0.6"/>
+        <ellipse cx="70"  cy="24" rx="22" ry="9"  fill="white" opacity="0.5"/>
+        <ellipse cx="155" cy="35" rx="26" ry="10" fill="white" opacity="0.55"/>
+        <ellipse cx="16"  cy="85" rx="16" ry="22" fill="#4A7A36"/>
+        <rect x="13"  y="98" width="5" height="28" fill="#5C4A2A"/>
+        <ellipse cx="184" cy="82" rx="15" ry="20" fill="#3B6D11"/>
+        <rect x="181"  y="94" width="5" height="26" fill="#5C4A2A"/>
+        <circle cx="40"  cy="145" r="3" fill="rgba(255,255,255,0.4)"/>
+        <circle cx="60"  cy="140" r="3" fill="rgba(255,255,255,0.35)"/>
+        <circle cx="80"  cy="148" r="3" fill="rgba(255,255,255,0.4)"/>
+        <circle cx="100" cy="138" r="3" fill="rgba(255,255,255,0.35)"/>
+        <circle cx="120" cy="145" r="3" fill="rgba(255,255,255,0.4)"/>
+        <rect x="62" y="22" width="76" height="56" rx="4" fill="#F5EDD8" opacity="0.95"/>
+        <rect x="66" y="26" width="68" height="48" rx="2" fill="#EDE0C8"/>
+        <line x1="66"  y1="38" x2="134" y2="38" stroke="#C8B890" stroke-width="0.5" opacity="0.5"/>
+        <line x1="66"  y1="50" x2="134" y2="50" stroke="#C8B890" stroke-width="0.5" opacity="0.5"/>
+        <line x1="66"  y1="62" x2="134" y2="62" stroke="#C8B890" stroke-width="0.5" opacity="0.5"/>
+        <line x1="88"  y1="26" x2="88"  y2="74" stroke="#C8B890" stroke-width="0.5" opacity="0.5"/>
+        <line x1="110" y1="26" x2="110" y2="74" stroke="#C8B890" stroke-width="0.5" opacity="0.5"/>
+        <path d="M76 64 L88 42 L108 52 L126 34" fill="none" stroke="#C07A40" stroke-width="2" stroke-dasharray="4,3" stroke-linecap="round"/>
+        <circle cx="76"  cy="64" r="5" fill="#CC2200"/>
+        <circle cx="76"  cy="64" r="2.5" fill="white"/>
+        <circle cx="126" cy="34" r="5" fill="#FFAA00"/>
+        <text x="126" y="37" font-size="7" text-anchor="middle" fill="#5C3A00" font-weight="bold">★</text>
+        <circle cx="105" cy="120" r="9" fill="#1E3850"/>
+        <line x1="105" y1="129" x2="105" y2="152" stroke="#1E3850" stroke-width="5" stroke-linecap="round"/>
+        <line x1="105" y1="145" x2="94"  y2="158" stroke="#1E3850" stroke-width="4" stroke-linecap="round"/>
+        <line x1="105" y1="145" x2="116" y2="156" stroke="#1E3850" stroke-width="4" stroke-linecap="round"/>
+        <line x1="105" y1="136" x2="93"  y2="128" stroke="#1E3850" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="105" y1="136" x2="117" y2="130" stroke="#1E3850" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="90" y1="122" x2="78" y2="122" stroke="#6090C0" stroke-width="2"   stroke-linecap="round" opacity="0.6"/>
+        <line x1="88" y1="128" x2="76" y2="128" stroke="#6090C0" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+        <line x1="86" y1="134" x2="74" y2="134" stroke="#6090C0" stroke-width="1"   stroke-linecap="round" opacity="0.3"/>
+        <circle cx="44"  cy="133" r="8" fill="#EE3322"/>
+        <text x="44"  y="137" font-size="8" text-anchor="middle" fill="white" font-weight="bold">P</text>
+        <circle cx="160" cy="128" r="8" fill="#EE3322"/>
+        <text x="160" y="132" font-size="8" text-anchor="middle" fill="white" font-weight="bold">P</text>
+        <circle cx="65" cy="170" r="9" fill="#FFAA00"/>
+        <text x="65" y="174" font-size="9" text-anchor="middle" fill="#5C3A00">★</text>
+      </svg>
+      <div class="blur-cover"></div>
+      <div class="cell-overlay"><span>掌握地圖，搶佔先機<br>限時挑戰，勝負一念間</span></div>
+      <div class="cell-num">05</div>
+    </div>
+
+    <!-- 06: 茶園若隱若現 -->
+    <div class="mystery-cell">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="tea-sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#C8DDB0"/>
+            <stop offset="40%"  stop-color="#B0CC98"/>
+            <stop offset="100%" stop-color="#88B070"/>
+          </linearGradient>
+          <linearGradient id="tea-row-a" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#6A9E50"/>
+            <stop offset="100%" stop-color="#4A7A34"/>
+          </linearGradient>
+          <linearGradient id="tea-row-b" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#558840"/>
+            <stop offset="100%" stop-color="#3A6828"/>
+          </linearGradient>
+          <!-- mist overlay -->
+          <linearGradient id="mist" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#E8F0DC" stop-opacity="0.72"/>
+            <stop offset="55%"  stop-color="#E8F0DC" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#E8F0DC" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+
+        <!-- sky / far hills -->
+        <rect width="200" height="200" fill="url(#tea-sky)"/>
+        <!-- distant misty ridge -->
+        <ellipse cx="100" cy="68" rx="160" ry="42" fill="#A8C888" opacity="0.55"/>
+        <ellipse cx="30"  cy="72" rx="60"  ry="30" fill="#98BC78" opacity="0.4"/>
+        <ellipse cx="175" cy="75" rx="55"  ry="28" fill="#98BC78" opacity="0.35"/>
+
+        <!-- tea terraces — gentle curved rows -->
+        <path d="M0 108 Q50 100 100 108 Q150 116 200 108 L200 122 Q150 130 100 122 Q50 114 0 122Z" fill="url(#tea-row-a)"/>
+        <path d="M0 126 Q50 118 100 126 Q150 134 200 126 L200 140 Q150 148 100 140 Q50 132 0 140Z" fill="url(#tea-row-b)"/>
+        <path d="M0 144 Q50 136 100 144 Q150 152 200 144 L200 158 Q150 166 100 158 Q50 150 0 158Z" fill="url(#tea-row-a)"/>
+        <path d="M0 162 Q50 155 100 162 Q150 169 200 162 L200 178 Q150 185 100 178 Q50 171 0 178Z" fill="url(#tea-row-b)"/>
+        <rect x="0" y="176" width="200" height="24" fill="#3A6828"/>
+
+        <!-- tea bush texture — tiny leaf bumps on rows -->
+        <ellipse cx="20"  cy="108" rx="7" ry="3.5" fill="#7AB858" opacity="0.5"/>
+        <ellipse cx="55"  cy="105" rx="7" ry="3.5" fill="#7AB858" opacity="0.45"/>
+        <ellipse cx="90"  cy="108" rx="7" ry="3.5" fill="#7AB858" opacity="0.5"/>
+        <ellipse cx="130" cy="112" rx="7" ry="3.5" fill="#7AB858" opacity="0.45"/>
+        <ellipse cx="168" cy="108" rx="7" ry="3.5" fill="#7AB858" opacity="0.5"/>
+        <ellipse cx="35"  cy="126" rx="7" ry="3"   fill="#68A848" opacity="0.4"/>
+        <ellipse cx="75"  cy="123" rx="7" ry="3"   fill="#68A848" opacity="0.4"/>
+        <ellipse cx="115" cy="127" rx="7" ry="3"   fill="#68A848" opacity="0.4"/>
+        <ellipse cx="155" cy="124" rx="7" ry="3"   fill="#68A848" opacity="0.4"/>
+
+        <!-- old building silhouette — barely visible through mist, upper third -->
+        <rect    x="60"  y="52" width="80" height="50" fill="#8CA870" opacity="0.30"/>
+        <polygon points="52,54 148,54 140,36 60,36"    fill="#7A9860" opacity="0.25"/>
+        <!-- single dark window hint -->
+        <rect x="82" y="62" width="14" height="18" rx="1" fill="#3A5028" opacity="0.22"/>
+        <rect x="104" y="62" width="14" height="18" rx="1" fill="#3A5028" opacity="0.20"/>
+
+        <!-- mist wash from top -->
+        <rect width="200" height="200" fill="url(#mist)"/>
+
+        <!-- subtle 茶 watermark in misty green -->
+        <text x="100" y="88" font-size="26" text-anchor="middle" fill="#5A8040" opacity="0.10" font-family="serif" font-weight="bold">茶</text>
+      </svg>
+      <div class="blur-cover"></div>
+      <div class="cell-overlay"><span>時光沉澱的香氣<br>一口入魂，留待相遇</span></div>
+      <div class="cell-num">06</div>
+    </div>
+
+  </div><!-- /grid-6 -->
+
+  <!-- DREAM SECTION -->
+  <div class="section-heading">
+    <span>許個願，分享你的冒險心 · Share Your Brave Wish</span>
+  </div>
+
+  <div class="dream-box">
+    <div class="dream-q">
+      展望 2026 年，你期許自己在生活或工作上<br>可以做什麼有點冒險的事情或突破呢？
+    </div>
+    <div class="dream-sub">匿名 &nbsp;·&nbsp; 歡迎發想、幻想與分享 ✦</div>
+    <textarea id="dream" placeholder="例如：帶著團隊去做一件所有人都說不可能的事、騎腳踏車環島……"></textarea>
+    <div class="submit-row">
+      <button id="submitDream" onclick="submitDream()">送出分享 ↗</button>
+      <span class="submit-note">＊ 請確認您目前的瀏覽器已登入公司 Google 帳號，以利順利送出填答（不會收集填答者資訊。不留名，只留你的勇氣）。</span>
+    </div>
+    <div id="submitStatus" class="submit-status"></div>
+  </div>
+
+  <!-- PRIVACY NOTICE -->
+  <div class="privacy-box">
+    <div class="privacy-title">個人資料保護聲明</div>
+    <div class="privacy-body">
+      <p>為提供您參加此活動，本公司將依以下聲明內容蒐集、處理及利用您的個人資料：</p>
+      <p>2026 Leadership Workshop 活動由台灣連線股份有限公司人力資源部主辦（以下簡稱：主辦單位）。主辦單位將蒐集活動參加者的姓名、身份證字號、出生日期，得以直接或間接識別個人的資料，並於本活動相關聯繫事項及人身保險等目的必要範圍內為利用，包括提供予島內散步旅行社股份有限公司（以下簡稱：島內散步）及新光產物保險股份有限公司（以下簡稱：新光產險），處理及利用個人資料辦理旅遊保險相關事項。</p>
+      <p>利用期間：限於活動開始後至活動結束後 1 個月，利用地區限於台灣地區相關法律或命令許可範圍內利用。</p>
+      <p>利用對象與方式：主辦單位將請島內散步窗口至台灣連線使用公務電腦運用個人資料辦理旅行責任險投保等相關事宜。新光產險對於個人資料蒐集、處理及利用方式，請參閱其隱私權政策：<a href="https://www.skinsurance.com.tw/SKI/Privacy.aspx" target="_blank" rel="noopener">https://www.skinsurance.com.tw/SKI/Privacy.aspx</a></p>
+      <p>若活動參加者不願提供個人資料，或者請求停止蒐集、處理或利用，或者請求刪除所蒐集之個資，將無法參與本活動及辦理相關保險。活動參加者得主張個資法第三條之當事人權利，權利行使方式請聯繫：<a href="mailto:dl_ltlhr_training@linecorp.com">dl_ltlhr_training@linecorp.com</a></p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    如有任何問題，請聯繫 HR：
+    <a href="mailto:dl_ltlhr_training@linecorp.com">dl_ltlhr_training@linecorp.com</a><br>
+    期待與你在 4/28 的旅程中相遇
+    <span class="mark">2026 Leadership Workshop &nbsp;—&nbsp; 變「格」領航</span>
+  </footer>
+
+</div><!-- /page -->
+
+<script>
+  const GAS_URL = 'https://script.google.com/a/macros/linecorp.com/s/AKfycbySz0vodcGaurPhyLnzs2jH8ZFQ0QX7USWwc8UGpJ_l-XH84V9-QrBsVWfh5bG8ChqC/exec';
+
+  function setStatus(msg, type) {
+    const el = document.getElementById('submitStatus');
+    el.textContent = msg;
+    el.className = 'submit-status' + (type ? ' ' + type : '');
+  }
+
+  function submitDream() {
+    const ta  = document.getElementById('dream');
+    const btn = document.getElementById('submitDream');
+    const val = (ta.value || '').trim();
+    if (!val) { ta.focus(); return; }
+
+    btn.disabled = true;
+    setStatus('傳送中…', '');
+
+    const url = GAS_URL + '?wish=' + encodeURIComponent(val);
+    const img = new Image();
+    img.onload = img.onerror = function() {
+      ta.value = '';
+      setStatus('已成功送出，謝謝你的分享 ✓', 'ok');
+      btn.textContent = '已送出 ✓';
+      setTimeout(() => {
+        btn.textContent = '送出分享 ↗';
+        btn.disabled = false;
+        setStatus('', '');
+      }, 3000);
+    };
+    img.src = url;
+  }
+</script>
+</body>
+</html>
