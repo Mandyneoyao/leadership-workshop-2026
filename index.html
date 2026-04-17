@@ -156,15 +156,10 @@
 
   .grid-6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1rem; }
 
-  @media (max-width: 520px) {
-    .grid-6 { grid-template-columns: repeat(2, 1fr); }
-    .meta-strip { grid-template-columns: 1fr; }
-  }
-
   .mystery-cell {
     position: relative; aspect-ratio: 1; border-radius: 10px;
     overflow: hidden; border: 1px solid var(--border); cursor: pointer;
-    background: var(--cream-deep);
+    background: var(--cream-deep); -webkit-tap-highlight-color: transparent;
   }
   .mystery-cell svg { width: 100%; height: 100%; display: block; }
   .mystery-cell .blur-cover {
@@ -173,9 +168,14 @@
     -webkit-backdrop-filter: blur(3px) saturate(0.7);
     background: rgba(249,245,238,0.15); transition: opacity 0.3s;
   }
+  /* desktop hover */
   .mystery-cell:hover .blur-cover   { opacity: 0; }
   .mystery-cell:hover .cell-overlay { opacity: 1; }
   .mystery-cell:hover .cell-num     { opacity: 0; }
+  /* mobile tap — JS adds .active class */
+  .mystery-cell.active .blur-cover   { opacity: 0; }
+  .mystery-cell.active .cell-overlay { opacity: 1; }
+  .mystery-cell.active .cell-num     { opacity: 0; }
   .cell-overlay {
     position: absolute; inset: 0; background: rgba(14,10,6,0.72);
     display: flex; align-items: center; justify-content: center;
@@ -190,6 +190,30 @@
     font-size: 10px; color: rgba(255,255,255,0.6);
     background: rgba(0,0,0,0.28); padding: 2px 7px; border-radius: 10px;
     letter-spacing: 0.06em; transition: opacity 0.2s;
+  }
+  /* tap hint label shown on mobile */
+  .tap-hint {
+    position: absolute; bottom: 7px; right: 8px;
+    font-size: 9px; color: rgba(255,255,255,0.55);
+    background: rgba(0,0,0,0.28); padding: 2px 6px; border-radius: 8px;
+    letter-spacing: 0.05em; pointer-events: none;
+  }
+  @media (hover: hover) { .tap-hint { display: none; } }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .page { padding: 0 1rem 4rem; }
+    .meta-strip { grid-template-columns: 1fr; }
+    .grid-6 { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .site-header { padding: 1.75rem 0 1.5rem; }
+    .site-header h1 { font-size: 26px; }
+    .check-item { padding: 12px 12px; gap: 10px; }
+    .check-body p { font-size: 13px; }
+    .dream-box { padding: 1.5rem 1.25rem; }
+    .dream-q { font-size: 14px; }
+    .privacy-body { font-size: 11px; }
+    .submit-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .cell-overlay span { font-size: 11px; }
   }
 
   /* ── Dream section ── */
@@ -446,6 +470,7 @@
       <div class="blur-cover"></div>
       <div class="cell-overlay"><span>山裡的夜晚<br>與星空共眠</span></div>
       <div class="cell-num">01</div>
+      <div class="tap-hint">點我</div>
     </div>
 
     <!-- 02: 夜訪螢火蟲 -->
@@ -490,6 +515,7 @@
       <div class="blur-cover"></div>
       <div class="cell-overlay"><span>夜色中的閃光精靈<br>每年 4–5 月限定登場</span></div>
       <div class="cell-num">02</div>
+      <div class="tap-hint">點我</div>
     </div>
 
     <!-- 03: 怒海尋寶 -->
@@ -529,6 +555,7 @@
       <div class="blur-cover"></div>
       <div class="cell-overlay"><span>在風浪中尋找寶藏<br>策略與膽識的考驗</span></div>
       <div class="cell-num">03</div>
+      <div class="tap-hint">點我</div>
     </div>
 
     <!-- 04: 北埔老街/春嬌板條 -->
@@ -583,6 +610,7 @@
       <div class="blur-cover"></div>
       <div class="cell-overlay"><span>客家古街風情<br>令人念念不忘的在地好味道</span></div>
       <div class="cell-num">04</div>
+      <div class="tap-hint">點我</div>
     </div>
 
     <!-- 05: 極速佈局戰 -->
@@ -643,6 +671,7 @@
       <div class="blur-cover"></div>
       <div class="cell-overlay"><span>掌握地圖，搶佔先機<br>限時挑戰，勝負一念間</span></div>
       <div class="cell-num">05</div>
+      <div class="tap-hint">點我</div>
     </div>
 
     <!-- 06: 茶園若隱若現 -->
@@ -711,6 +740,7 @@
       <div class="blur-cover"></div>
       <div class="cell-overlay"><span>時光沉澱的香氣<br>一口入魂，留待相遇</span></div>
       <div class="cell-num">06</div>
+      <div class="tap-hint">點我</div>
     </div>
 
   </div><!-- /grid-6 -->
@@ -758,6 +788,17 @@
 <script>
   const GAS_URL = 'https://script.google.com/a/macros/linecorp.com/s/AKfycbySz0vodcGaurPhyLnzs2jH8ZFQ0QX7USWwc8UGpJ_l-XH84V9-QrBsVWfh5bG8ChqC/exec';
 
+  /* ── Mystery cell tap to reveal ── */
+  document.querySelectorAll('.mystery-cell').forEach(cell => {
+    cell.addEventListener('click', () => {
+      const isActive = cell.classList.contains('active');
+      // close all others
+      document.querySelectorAll('.mystery-cell').forEach(c => c.classList.remove('active'));
+      if (!isActive) cell.classList.add('active');
+    });
+  });
+
+  /* ── Submit ── */
   function setStatus(msg, type) {
     const el = document.getElementById('submitStatus');
     el.textContent = msg;
